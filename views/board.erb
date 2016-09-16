@@ -4,6 +4,12 @@
     <title><%= "/#{board.route}/ - #{board.name}" %></title>
   </head>
   <body>
+    <% if flash[:error] %>
+    <span class="flash">
+      <%= flash[:error] %>
+    </span>
+    <% end %>
+    
     <ul>
       <% for b in boards %>
 	<li><a href=<%= "/#{b.route}" %>><%= b.route %></a></li>
@@ -13,7 +19,7 @@
     <% for yarn in yarns %>
       <article>
 	<h1><%= yarn.op.as_json %></h1>
-	<a href=<%= "thread/#{yarn.number}" %>>view</a>
+	<a href=<%= "/#{board.route}/thread/#{yarn.number}" %>>view</a>
       </article>
     <% end %>
   </body>
