@@ -1,0 +1,9 @@
+:connection:
+  :adapter: sqlite3
+  :database: imageboard.db
+
+  #:adapter: mysql
+  #:host: localhost
+  #:username: myuser
+  #:password: mypass
+  #:database: iikoto

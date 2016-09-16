@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iikoto</title>
+  </head>
+  <body>
+    <h1>Boards:</h1>
+    <ul>
+      <% for board in boards %>
+      <li><%= "/#{board.route}/ - #{board.name}" %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
