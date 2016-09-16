@@ -16,6 +16,7 @@ end
 ActiveRecord::Base.establish_connection(CONFIG[:connection])
 
 class Imageboard < Sinatra::Base
+  # This is the route for the homepage.
   get '/' do
     locals = {
       :boards => Board.all
