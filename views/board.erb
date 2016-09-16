@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "/#{board.route}/ - #{board.name}" %></title>
+  </head>
+  <body>
+    <ul>
+      <% for b in boards %>
+	<li><a href=<%= "/#{b.route}" %>><%= b.route %></a></li>
+      <% end %>
+    </ul>
+    <h1><%= "/#{board.route}/ - #{board.name}" %></h1>
+    <% for yarn in yarns %>
+      <article>
+	<h1><%= yarn.op.as_json %></h1>
+	<a href=<%= "thread/#{yarn.number}" %>>view</a>
+      </article>
+    <% end %>
+  </body>
+</html>
