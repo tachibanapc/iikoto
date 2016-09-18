@@ -25,7 +25,11 @@ GEM
       tilt (>= 1.3, < 3)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    slim (3.0.7)
+      temple (~> 0.7.6)
+      tilt (>= 1.3.3, < 2.1)
     sqlite3 (1.3.11)
+    temple (0.7.7)
     thread_safe (0.3.5)
     tilt (2.0.5)
     tzinfo (1.2.2)
@@ -38,6 +42,7 @@ DEPENDENCIES
   activerecord
   sinatra
   sinatra-flash
+  slim
   sqlite3
 
 BUNDLED WITH

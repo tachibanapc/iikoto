@@ -5,9 +5,12 @@ main#catalog
         a href="/#{board.route}/thread/#{yarn.number}" clicc here
 
       .info
-        /= elapsed yarn.updated
-        => yarn.updated
-        ' /
-        => yarn.subject
-        ' /
-        => yarn.op.body
+        time title=yarn.updated.strftime("%Y/%m/%d %H:%M") => yarn.updated.elapsed
+
+        - if yarn.subject
+          ' /
+          => yarn.subject
+
+        - if yarn.op.body
+          ' /
+          = yarn.op.body

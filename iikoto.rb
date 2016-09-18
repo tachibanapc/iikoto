@@ -4,6 +4,7 @@ require 'active_record'
 require 'yaml'
 
 require_relative 'models/master'
+require_relative 'core_ext'
 
 # Read the config file.
 begin
