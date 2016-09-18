@@ -1,0 +1,6 @@
+main#home
+  ul
+    - boards.each do |board|
+      li
+        a href="/#{board.route}"
+          | /#{board.route}/ - #{board.name}

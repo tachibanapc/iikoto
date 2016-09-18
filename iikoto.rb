@@ -21,29 +21,40 @@ class Imageboard < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
+  # CSS route
+  get '*.css' do
+    # ???
+  end
+
   # This is the route for the homepage.
   get '/' do
     locals = {
-      :boards => Board.all
+      title: 'Home :: iikoto',
+      type: 'home',
+      boards: Board.all
     }
     
-    erb :home, :locals => locals
+    slim :home, locals: locals
   end
 
   # Board index page.
-  get '/:board' do
+  get('/:board') { redirect "/#{params[:board]}/" }
+
+  get '/:board/' do
     board = Board.find_by(route: params[:board])
     if board.nil?
       flash[:error] = "The board you selected doesn't exist!"
       redirect '/'
     else
       locals = {
+        title: "/#{board.route}/ :: #{board.name}",
+        type: 'board',
         board: board,
         boards: Board.all,
         yarns: board.yarns.reverse
       }
       
-      erb :board, :locals => locals
+      slim :board, locals: locals
     end
   end
 
@@ -60,13 +71,15 @@ class Imageboard < Sinatra::Base
       redirect "/#{board.route}"
     else
       locals = {
+        title: "/#{board.route}/ :: #{yarn.subject.truncate(20) || board.name}",
+        type: 'yarn',
         board: board,
         boards: Board.all,
         yarn: yarn,
         replies: Post.where(yarn: yarn.number)[1..-1]
       }
       
-      erb :thread, :locals => locals
+      slim :yarn, locals: locals
     end
   end
 end

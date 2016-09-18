@@ -1,0 +1,13 @@
+main#catalog
+  - yarns.each do |yarn|
+    .thread
+      figure
+        a href="/#{board.route}/thread/#{yarn.number}" clicc here
+
+      .info
+        /= elapsed yarn.updated
+        => yarn.updated
+        ' /
+        => yarn.subject
+        ' /
+        => yarn.op.body

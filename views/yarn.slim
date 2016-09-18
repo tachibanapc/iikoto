@@ -1,0 +1,44 @@
+main#thread
+  #thread-bar
+    a#return href="/#{board.route}/"
+      ' ❬❬
+    - if yarn.subject
+      span#subject = yarn.subject
+    - if yarn.locked
+      span#locked title="Thread locked, you may not reply."
+        | 🔒
+  .post.op
+    .info
+      span.name => yarn.op.name
+      span.time => yarn.op.time.strftime("%Y/%m/%d %H:%M")
+      a.num href="/#{board.route}/thread/#{yarn.number}" &#8470;
+      a.num.postnum =< yarn.number
+
+    hr
+
+    figure
+      | Image goes here
+    .body
+      p = yarn.op.body
+
+  - if replies
+    - replies.each do |reply|
+      .post.reply id="p#{reply.number}"
+        | Image goes here
+        /- if reply.file
+          figure Image goes here
+
+        .info
+          span.name => reply.name
+          span.time => reply.time.strftime("%Y/%m/%d %H:%M")
+          a.num href="/#{board.route}/thread/#{yarn.number}#p#{reply.number}"
+            | &#8470;
+          a.num.postnum =< reply.number
+
+        hr: .body: p = reply.body
+
+hr
+#thread-controls
+  ' [
+  a> href="/#{board.route}/" Back
+  ' ]

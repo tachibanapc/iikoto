@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title = title
+    meta charset='utf-8'
+    link type='text/css' rel='stylesheet' href="/#{type}.css"
+
+  body
+    header
+      nav
+        ' [
+        a> href='/' Home
+        - boards.each do |board|
+          ' /
+          a> href="/#{board.route}/" title=board.name
+            = board.route
+        ' ] [
+        a> href='https://github.com/Lambda-4S/iikoto' source
+        ' ]
+
+      h1#title = title
+
+    - if flash[:error]
+      #error = flash[:error]
+
+    hr
+    == yield
