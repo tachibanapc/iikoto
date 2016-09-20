@@ -1,15 +1,15 @@
 CREATE TABLE boards (
   route TEXT PRIMARY KEY NOT NULL,
-  name  TEXT NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE yarns (
-  number  INTEGER PRIMARY KEY NOT NULL,
+  number INTEGER PRIMARY KEY NOT NULL,
   board TEXT NOT NULL,
   updated DATETIME NOT NULL,
   subject TEXT,
-  locked  BOOLEAN,
-  FOREIGN KEY(board) REFERENCES board(route)
+  locked BOOLEAN,
+  FOREIGN KEY(board) REFERENCES boards(route)
 );
 
 CREATE TABLE posts (
@@ -19,5 +19,16 @@ CREATE TABLE posts (
   time DATETIME NOT NULL,
   body TEXT,
   spoiler BOOLEAN,
-  FOREIGN KEY(yarn) REFERENCES yarn(number)
+  file INTEGER,
+  FOREIGN KEY(file) REFERENCES files(number)
+);
+
+CREATE TABLE files (
+  number INTEGER PRIMARY KEY,
+  extension TEXT NOT NULL,
+  name TEXT NOT NULL,
+  width INTEGER NOT NULL,
+  height INTEGER NOT NULL,
+  t_width INTEGER NOT NULL,
+  t_height INTEGER NOT NULL
 );

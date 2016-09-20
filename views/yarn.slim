@@ -16,17 +16,21 @@ main#thread
 
     hr
 
-    figure
-      | Image goes here
+    - if yarn.op.file
+      figure: a href="/src/#{yarn.op.file.number}.#{yarn.op.file.extension}" target='_blank'
+        img[ src="/thumb/#{yarn.op.file.number}.jpg" title=yarn.op.file.name
+             width=yarn.op.file.t_width height=yarn.op.file.t_height ]
+
     .body
       p = yarn.op.body
 
   - if replies
     - replies.each do |reply|
       .post.reply id="p#{reply.number}"
-        | Image goes here
-        /- if reply.file
-          figure Image goes here
+        - if reply.file
+          figure: a href="/src/#{reply.file.number}.#{reply.file.extension}" target='_blank'
+            img[ src="/thumb/#{reply.file.number}.jpg" title=reply.file.name
+                 width=reply.file.t_width height=reply.file.t_height ]
 
         .info
           span.name => reply.name
@@ -36,6 +40,9 @@ main#thread
           a.num.postnum =< reply.number
 
         hr: .body: p = reply.body
+
+hr
+== slim :postform, locals: { page: "#{board.route}/thread/#{yarn.number}", yarn: true }
 
 hr
 #thread-controls

@@ -1,8 +1,15 @@
+== slim :postform, locals: { page: "#{board.route}/", yarn: false }
+hr
+
 main#catalog
   - yarns.each do |yarn|
     .thread
-      figure
-        a href="/#{board.route}/thread/#{yarn.number}" clicc here
+      - if yarn.op.file
+        figure: a href="/#{board.route}/thread/#{yarn.number}"
+          img[ src="/thumb/#{yarn.op.file.number}.jpg" title=yarn.op.file.name
+             width=yarn.op.file.t_width height=yarn.op.file.t_height ]
+      - else
+        a href="/#{board.route}/thread/#{yarn.number}" Thread
 
       .info
         time title=yarn.updated.strftime("%Y/%m/%d %H:%M") => yarn.updated.elapsed

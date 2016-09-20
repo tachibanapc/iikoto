@@ -1,0 +1,21 @@
+form#post-form action="/post/#{page}" method='POST' enctype='multipart/form-data'
+  - unless yarn
+    input.form.text#subject type='text' placeholder='Subject' name='subject'
+    br
+
+  input.form.text#name type='text' placeholder='Name' value='Anonymous' name='name'
+
+  input.form.button#send type='submit' value='Post'
+  br
+
+  textarea#body placeholder='Comment' name='body'
+  br
+
+  input#file type='file' name='file' accept='image/jpeg, image/png, image/gif'
+
+  - if yarn
+    input#sage type='checkbox' name='sage'
+    label.form.button#sage-button for='sage' Sage
+
+  input#spoiler type='checkbox' name='spoiler'
+  label.form.button#spoiler-button for='spoiler' Spoiler

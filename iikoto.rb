@@ -69,7 +69,7 @@ class Imageboard < Sinatra::Base
       redirect '/'
     elsif yarn.nil?
       flash[:error] = "The thread you specified doesn't exist!"
-      redirect "/#{board.route}"
+      redirect "/#{board.route}/"
     else
       locals = {
         title: "/#{board.route}/ :: #{yarn.subject.truncate(20) || board.name}",
