@@ -10,7 +10,7 @@ main#thread
   .post.op
     .info
       span.name => yarn.op.name
-      span.time => yarn.op.time.strftime("%Y/%m/%d %H:%M")
+      span.time => yarn.op.time.strftime('%Y/%m/%d %H:%M')
       a.num href="/#{board.route}/thread/#{yarn.number}" &#8470;
       a.num.postnum =< yarn.number
 
@@ -34,7 +34,7 @@ main#thread
 
         .info
           span.name => reply.name
-          span.time => reply.time.strftime("%Y/%m/%d %H:%M")
+          span.time => reply.time.strftime('%Y/%m/%d %H:%M')
           a.num href="/#{board.route}/thread/#{yarn.number}#p#{reply.number}"
             | &#8470;
           a.num.postnum =< reply.number
@@ -42,7 +42,7 @@ main#thread
         hr: .body: p = reply.body
 
 hr
-== slim :postform, locals: { page: "#{board.route}/thread/#{yarn.number}", yarn: true }
+== slim :postform, locals: { page: "/#{board.route}/thread/#{yarn.number}", yarn: true }
 
 hr
 #thread-controls

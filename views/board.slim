@@ -1,4 +1,4 @@
-== slim :postform, locals: { page: "#{board.route}/", yarn: false }
+== slim :postform, locals: { page: "/#{board.route}/", yarn: false }
 hr
 
 main#catalog
@@ -12,7 +12,7 @@ main#catalog
         a href="/#{board.route}/thread/#{yarn.number}" Thread
 
       .info
-        time title=yarn.updated.strftime("%Y/%m/%d %H:%M") => yarn.updated.elapsed
+        time title=yarn.updated.strftime('%Y/%m/%d %H:%M') => yarn.updated.elapsed
 
         - if yarn.subject
           ' /

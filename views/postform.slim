@@ -1,4 +1,4 @@
-form#post-form action="/post/#{page}" method='POST' enctype='multipart/form-data'
+form#post-form action=page method='POST' enctype='multipart/form-data'
   - unless yarn
     input.form.text#subject type='text' placeholder='Subject' name='subject'
     br
