@@ -1,0 +1,95 @@
+/*
+Error: Undefined variable: "$dark".
+        on line 11 of public/stylesheets/sass/form.sass
+
+6: #post-form, #floating-form
+7:   width: $form-width
+8:   margin: 10px auto
+9:   position: relative
+10: 
+11:   background-color: $dark
+12:   box-shadow: $shadow
+13: 
+14:   *
+15:     font-size: $small
+16:     font-family: $sans-serif
+
+Backtrace:
+public/stylesheets/sass/form.sass:11
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `map'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `block in visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `block in with_base'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:115:in `with_frame'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/stack.rb:79:in `with_base'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:160:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:181:in `with_environment'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:168:in `visit_children'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:188:in `visit_root'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:159:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:381:in `_render_with_sourcemap'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/engine.rb:298:in `render_with_sourcemap'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sass-3.4.22/lib/sass/plugin/rack.rb:51:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/xss_header.rb:18:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/path_traversal.rb:16:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/json_csrf.rb:18:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/base.rb:49:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-protection-1.5.3/lib/rack/protection/frame_options.rb:31:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/nulllogger.rb:9:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/show_exceptions.rb:25:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:182:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:2013:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `block in call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1787:in `synchronize'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:1487:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/tempfile_reaper.rb:15:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/lint.rb:49:in `_call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/lint.rb:37:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/showexceptions.rb:24:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/commonlogger.rb:33:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/sinatra-1.4.7/lib/sinatra/base.rb:219:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/chunked.rb:54:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/content_length.rb:15:in `call'
+/Users/rose/.rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/handler/webrick.rb:88:in `service'
+/Users/rose/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/rose/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/rose/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$dark\".\A         on line 11 of public/stylesheets/sass/form.sass\A \A 6: #post-form, #floating-form\A 7:   width: $form-width\A 8:   margin: 10px auto\A 9:   position: relative\A 10: \A 11:   background-color: $dark\A 12:   box-shadow: $shadow\A 13: \A 14:   *\A 15:     font-size: $small\A 16:     font-family: $sans-serif"; }
