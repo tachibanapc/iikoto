@@ -3,7 +3,7 @@ form#post-form action=page method='POST' enctype='multipart/form-data'
     input.form.text#subject type='text' placeholder='Subject' name='subject'
     br
 
-  input.form.text#name type='text' placeholder='Name' value='Anonymous' name='name'
+  input.form.text#name type='text' placeholder='Name' value='#{$CONFIG[:default_name]}' name='name'
 
   input.form.button#send type='submit' value='Post'
   br

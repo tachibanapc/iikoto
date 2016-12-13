@@ -7,3 +7,15 @@
   #:username: myuser
   #:password: mypass
   #:database: iikoto
+
+# max image filesize in bytes
+:max_filesize: 2097152
+
+# thread post reply limit
+:reply_limit: 300
+
+# thread image reply limit
+:image_limit: 150
+
+# default poster name
+:default_name: Anonymous
