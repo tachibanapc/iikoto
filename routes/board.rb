@@ -117,6 +117,6 @@ class Imageboard
       height: properties[:height]
     })
 
-    params.to_s
+    redirect "/#{board.route}/thread/#{yarn.number}"
   end
 end
