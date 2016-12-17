@@ -1,4 +1,5 @@
 require_relative 'board'
+require_relative 'yarn'
 
 class Imageboard
   # This is the route for the homepage.

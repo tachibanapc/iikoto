@@ -9,26 +9,25 @@ CREATE TABLE yarns (
   updated DATETIME NOT NULL,
   subject TEXT,
   locked BOOLEAN,
-  FOREIGN KEY(board) REFERENCES boards(route)
+  FOREIGN KEY(board) REFERENCES boards(route),
+  FOREIGN KEY(number) REFERENCES posts(number)
 );
 
 CREATE TABLE posts (
-  number INTEGER PRIMARY KEY AUTOINCREMENT,
-  yarn INT NOT NULL,
+  number INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  yarn INTEGER,
   name TEXT NOT NULL,
   time DATETIME NOT NULL,
   body TEXT,
-  spoiler BOOLEAN,
-  file INTEGER,
-  FOREIGN KEY(file) REFERENCES files(number)
+  spoiler BOOLEAN
 );
 
-CREATE TABLE files (
-  number INTEGER PRIMARY KEY,
+CREATE TABLE images (
+  number INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+  post INTEGER NOT NULL,
   extension TEXT NOT NULL,
   name TEXT NOT NULL,
   width INTEGER NOT NULL,
   height INTEGER NOT NULL,
-  t_width INTEGER NOT NULL,
-  t_height INTEGER NOT NULL
+  FOREIGN KEY(post) REFERENCES posts(number)
 );

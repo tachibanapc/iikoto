@@ -17,9 +17,8 @@ main#thread
     hr
 
     - if yarn.op.file
-      figure: a href="/src/#{yarn.op.file.number}.#{yarn.op.file.extension}" target='_blank'
-        img[ src="/thumb/#{yarn.op.file.number}.jpg" title=yarn.op.file.name
-             width=yarn.op.file.t_width height=yarn.op.file.t_height ]
+      figure: a href="/images/#{board.route}/#{yarn.op.file.name}" target='_blank'
+        img[ src="/thumbs/#{board.route}/#{yarn.op.file.name}" title=yarn.op.file.name ]
 
     .body
       p = yarn.op.body
@@ -28,9 +27,8 @@ main#thread
     - replies.each do |reply|
       .post.reply id="p#{reply.number}"
         - if reply.file
-          figure: a href="/src/#{reply.file.number}.#{reply.file.extension}" target='_blank'
-            img[ src="/thumb/#{reply.file.number}.jpg" title=reply.file.name
-                 width=reply.file.t_width height=reply.file.t_height ]
+          figure: a href="/images/#{board.route}/#{reply.file.name}" target='_blank'
+            img[ src="/thumbs/#{board.route}/#{reply.file.number}.jpg" title=reply.file.name ]
 
         .info
           span.name => reply.name

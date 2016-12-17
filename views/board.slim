@@ -6,8 +6,7 @@ main#catalog
     .thread
       - if yarn.op.file
         figure: a href="/#{board.route}/thread/#{yarn.number}"
-          img[ src="/thumb/#{yarn.op.file.number}.jpg" title=yarn.op.file.name
-             width=yarn.op.file.t_width height=yarn.op.file.t_height ]
+          img[ src="/thumbs/#{board.route}/#{yarn.op.file.name}" title=yarn.op.file.name ]
       - else
         a href="/#{board.route}/thread/#{yarn.number}" Thread
 

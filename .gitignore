@@ -57,3 +57,6 @@ build-iPhoneSimulator/
 *~
 
 __test.rb
+
+public/images
+public/thumbs
