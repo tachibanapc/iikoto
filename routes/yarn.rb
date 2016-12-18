@@ -36,7 +36,7 @@ class Imageboard
       flash[:error] = "The thread you specified doesn't exist!"
       redirect "/#{board.route}"
     else
-      if body.empty?
+      if params[:body].empty?
         flash[:error] = "You can't make an empty reply!"
         redirect "/#{board.route}/thread/#{yarn.number}"
       end

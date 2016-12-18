@@ -107,7 +107,7 @@ class Imageboard
       locked: false
     })
 
-    post.yarn = post.number
+    post.update(yarn: post.number)
 
     imagefile = Image.create({
       post: post.number,
