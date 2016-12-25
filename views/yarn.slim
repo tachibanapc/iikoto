@@ -28,7 +28,7 @@ main#thread
       .post.reply id="p#{reply.number}"
         - if reply.file
           figure: a href="/images/#{board.route}/#{reply.file.name}" target='_blank'
-            img[ src="/thumbs/#{board.route}/#{reply.file.number}.jpg" title=reply.file.name ]
+            img[ src="/thumbs/#{board.route}/#{reply.file.name}" title=reply.file.name ]
 
         .info
           span.name => reply.name

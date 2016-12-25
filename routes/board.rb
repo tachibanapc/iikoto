@@ -62,9 +62,8 @@ class Imageboard
 
     # Generate a UUID
     properties.merge!({
-      uuid: SecureRandom.urlsafe_base64($CONFIG[:url_hash_size])
+      uuid: Image.uuid
     })
-
 
     # Establish the image's common properties.
     properties.merge!({
@@ -107,7 +106,7 @@ class Imageboard
       locked: false
     })
 
-    post.yarn = post.number
+    post.update(yarn: post.number)
 
     imagefile = Image.create({
       post: post.number,
