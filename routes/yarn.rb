@@ -12,12 +12,12 @@ class Imageboard
       redirect "/#{board.route}/"
     else
       locals = {
-        title: "/#{board.route}/ :: #{yarn.subject.truncate(20) || board.name}",
+        title: "/#{board.route}/ :: #{!yarn.subject.empty? ? yarn.subject.truncate(20) : board.name}",
         type: 'yarn',
         board: board,
         boards: Board.all,
         yarn: yarn,
-        replies: Post.where(yarn: yarn.number)[1..-1]
+        replies: Post.where(yarn: yarn.number)
       }
 
       slim :yarn, locals: locals
@@ -36,7 +36,7 @@ class Imageboard
       flash[:error] = "The thread you specified doesn't exist!"
       redirect "/#{board.route}"
     else
-      if body.empty?
+      if !params.has_key? "body" or params[:body].empty?
         flash[:error] = "You can't make an empty reply!"
         redirect "/#{board.route}/thread/#{yarn.number}"
       end
