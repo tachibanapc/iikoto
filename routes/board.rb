@@ -33,7 +33,7 @@ class Imageboard
       redirect '/'
     end
 
-    if !params.has_key? "file"
+    if !params.has_key? "file" or !params[:file].is_a? Hash
       flash[:error] = "You can't start a thread with no file!"
       redirect "/#{board.route}"
     end
@@ -52,7 +52,13 @@ class Imageboard
       redirect "/#{board.route}"
     end
 
-    image = MiniMagick::Image.read(file)
+    begin
+      image = MiniMagick::Image.read(file)
+    rescue MiniMagick::Invalid
+      flash[:error] = "The image you provided is invalid."
+      redirect "/#{board.route}"
+    end
+
     properties = {}
 
     if !image.valid?

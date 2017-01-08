@@ -52,7 +52,7 @@ class Imageboard
         body: params[:body]
       })
 
-      if params.has_key? "file"
+      if params.has_key? "file" or !params[:file].is_a? Hash
         filetype = params[:file][:type]
         if !filetype.match(/image\/jp(e)?g|png|gif/)
           flash[:error] = "The file you provided is of invalid type."
@@ -66,7 +66,13 @@ class Imageboard
           redirect "/#{board.route}"
         end
 
-        image = MiniMagick::Image.read(file)
+        begin
+          image = MiniMagick::Image.read(file)
+        rescue MiniMagick::Invalid
+          flash[:error] = "The image you provided is invalid."
+          redirect "/#{board.route}"
+        end
+
         properties = {}
 
         if !image.valid?
