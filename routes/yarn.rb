@@ -20,7 +20,7 @@ class Imageboard
         board: board,
         boards: Board.all,
         yarn: yarn,
-        replies: Post.where(yarn: yarn.number)
+        replies: Post.where(yarn: yarn.number)[1..-1]
       }
 
       slim :yarn, locals: locals
