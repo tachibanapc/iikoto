@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/flash'
+require 'rack/csrf'
 require 'active_record'
 require 'yaml'
 require 'sass/plugin/rack'
@@ -42,6 +43,7 @@ class Imageboard < Sinatra::Base
 
   Sass::Plugin.options[:style] = :compressed
   use Sass::Plugin::Rack
+  use Rack::Csrf, :raise => true
 
   require_relative 'routes/main'
 end
