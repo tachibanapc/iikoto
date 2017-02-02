@@ -20,7 +20,7 @@ class Imageboard
         board: board,
         boards: Board.all,
         yarn: yarn,
-        replies: Post.where(yarn: yarn.number)[1..-1]
+        replies: yarn.replies
       }
 
       slim :yarn, locals: locals
@@ -44,15 +44,12 @@ class Imageboard
         redirect "/#{board.route}/thread/#{yarn.number}"
       end
 
-      post = Post.create({
-        yarn: yarn.number,
-        name: params[:name],
-        spoiler: params[:spoiler],
-        time: DateTime.now,
-        body: params[:body]
-      })
+      if params.has_key? "file"
+        unless params[:file].is_a? Hash
+          flash[:error] = "File parameter must be a file."
+          redirect "/#{board.route}"
+        end
 
-      if params.has_key? "file" or !params[:file].is_a? Hash
         filetype = params[:file][:type]
         if !filetype.match(/image\/jp(e)?g|png|gif/)
           flash[:error] = "The file you provided is of invalid type."
@@ -79,6 +76,14 @@ class Imageboard
           flash[:error] = "The image you provided is invalid."
           redirect "/#{board.route}"
         end
+
+        post = Post.create({
+          yarn: yarn.number,
+          name: params[:name],
+          spoiler: params[:spoiler],
+          time: DateTime.now,
+          body: params[:body]
+        })
 
         # Generate a UUID
         properties.merge!({
@@ -118,6 +123,26 @@ class Imageboard
           width: properties[:width],
           height: properties[:height]
         })
+
+        # bump the thread
+        unless params.has_key? "sage"
+          yarn.updated = DateTime.now
+          yarn.save
+        end
+      else
+        Post.create({
+          yarn: yarn.number,
+          name: params[:name],
+          spoiler: params[:spoiler],
+          time: DateTime.now,
+          body: params[:body]
+        })
+
+        # bump the thread
+        unless params.has_key? "sage"
+          yarn.updated = DateTime.now
+          yarn.save
+        end
       end
 
       redirect "/#{board.route}/thread/#{yarn.number}"

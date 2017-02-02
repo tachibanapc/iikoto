@@ -13,10 +13,12 @@ main#catalog
       .info
         time title=yarn.updated.strftime('%Y/%m/%d %H:%M') => yarn.updated.elapsed
 
-        - if yarn.subject
+        ' / #{yarn.replies.length} replies
+
+        - if !yarn.subject.empty?
           ' /
           => yarn.subject
 
-        - if yarn.op.body
+        - if !yarn.op.body.empty?
           ' /
           = yarn.op.body
