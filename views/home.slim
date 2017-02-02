@@ -1,13 +1,18 @@
 main#home
+  img src="/favicon.png" class="logo" width="64" height="64"
   table.boards
-    tr
+    tr.top
       td URL
       td Title
+      td Threads
     - boards.each do |board|
       tr
         td
           a href="/#{board.route}"
-            | #{board.route}
+            | /#{board.route}/
         td
           a href="/#{board.route}"
             | #{board.name}
+        td
+          a href="/#{board.route}"
+            | #{board.yarns.length}
