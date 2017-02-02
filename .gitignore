@@ -61,4 +61,4 @@ __test.rb
 public/images
 public/thumbs
 
-.sass_cache
+.sass_cache/

@@ -1,6 +1,13 @@
 main#home
-  ul
+  table.boards
+    tr
+      td URL
+      td Title
     - boards.each do |board|
-      li
-        a href="/#{board.route}"
-          | /#{board.route}/ - #{board.name}
+      tr
+        td
+          a href="/#{board.route}"
+            | #{board.route}
+        td
+          a href="/#{board.route}"
+            | #{board.name}
