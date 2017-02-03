@@ -43,7 +43,7 @@ $form-width: 350px
   width: 40px
 
 #name
-  width: $form-width - 50px
+  width: $form-width - 50px - 5px
 
 #body
   width: $form-width - 10px
@@ -74,14 +74,14 @@ $form-width: 350px
   overflow: hidden
   white-space: nowrap
 
-#sage, #spoiler
+#sage-button, #spoiler-button
   margin-left: 5px
 
-#send, #sage, #spoiler
+#send, #sage-button, #spoiler-button
   float: right
 
-#sagei:checked + #sage,
-#spoileri:checked + #spoiler
+#sage:checked + #sage-button,
+#spoiler:checked + #spoiler-button
   font-weight: bold
   color: $text
   background-color: $darker

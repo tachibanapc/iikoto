@@ -61,4 +61,6 @@ __test.rb
 public/images
 public/thumbs
 
-.sass_cache/
+.sass*
+.DS_Store
+._*
