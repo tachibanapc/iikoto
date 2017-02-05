@@ -61,6 +61,8 @@ __test.rb
 public/images
 public/thumbs
 
+public/stylesheets/*.css.*
+
 .sass*
 .DS_Store
 ._*
