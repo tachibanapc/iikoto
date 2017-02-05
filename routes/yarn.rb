@@ -50,6 +50,11 @@ class Imageboard
           redirect "/#{board.route}"
         end
 
+        if yarn.image_limit?
+          flash[:error] = "The image reply limit has been reached."
+          redirect "/#{board.route}"
+        end
+
         filetype = params[:file][:type]
         if !filetype.match(/image\/jp(e)?g|png|gif/)
           flash[:error] = "The file you provided is of invalid type."
@@ -130,6 +135,11 @@ class Imageboard
           yarn.save
         end
       else
+        if yarn.reply_limit?
+          flash[:error] = "The reply limit has been reached."
+          redirect "/#{board.route}"
+        end
+
         Post.create({
           yarn: yarn.number,
           name: params[:name],

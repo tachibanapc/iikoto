@@ -14,10 +14,10 @@ class Yarn < ActiveRecord::Base
   end
 
   def reply_limit?
-    self.replies.length > $CONFIG[:reply_limit]
+    self.replies.length >= $CONFIG[:reply_limit]
   end
 
   def image_limit?
-    self.images.length > $CONFIG[:image_limit]
+    self.images.length >= $CONFIG[:image_limit]
   end
 end
