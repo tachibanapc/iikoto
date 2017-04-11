@@ -101,7 +101,7 @@ class Imageboard
       name: params[:name],
       time: DateTime.now,
       body: params[:body],
-      spoiler: params.has_key?(:spoiler)
+      spoiler: params[:spoiler] == "on"
     })
 
     yarn = Yarn.create({

@@ -85,7 +85,7 @@ class Imageboard
         post = Post.create({
           yarn: yarn.number,
           name: params[:name],
-          spoiler: params[:spoiler],
+          spoiler: params[:spoiler] == "on",
           time: DateTime.now,
           body: params[:body]
         })
@@ -143,7 +143,7 @@ class Imageboard
         Post.create({
           yarn: yarn.number,
           name: params[:name],
-          spoiler: params[:spoiler],
+          spoiler: params[:spoiler] == "on",
           time: DateTime.now,
           body: params[:body]
         })

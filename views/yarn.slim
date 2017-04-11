@@ -18,7 +18,10 @@ main#thread
 
     - if yarn.op.file
       figure: a href="/images/#{board.route}/#{yarn.op.file.name}" target='_blank'
-        img[ src="/thumbs/#{board.route}/#{yarn.op.file.name}" title=yarn.op.file.name ]
+        - if yarn.op.spoiler
+          img[ src="/spoiler.png" title=yarn.op.file.name]
+        - else
+          img[ src="/thumbs/#{board.route}/#{yarn.op.file.name}" title=yarn.op.file.name ]
 
     .body
       p = yarn.op.body
@@ -28,7 +31,10 @@ main#thread
       .post.reply id="p#{reply.number}"
         - if reply.file
           figure: a href="/images/#{board.route}/#{reply.file.name}" target='_blank'
-            img[ src="/thumbs/#{board.route}/#{reply.file.name}" title=reply.file.name ]
+            - if reply.spoiler
+              img[ src="/spoiler.png" title=reply.file.name width=125 height=125 ]
+            - else
+              img[ src="/thumbs/#{board.route}/#{reply.file.name}" title=reply.file.name ]
 
         .info
           span.name => reply.name
