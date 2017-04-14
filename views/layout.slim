@@ -20,6 +20,10 @@ html
         a> href='https://github.com/Lambda-4S/iikoto' source
         ' ]
 
+
+      - if !Banner.pick.nil?
+        img[ src="#{Banner.pick}" ]
+
       h1#title = title
 
     - if flash[:error]
@@ -27,3 +31,7 @@ html
 
     hr
     == yield
+
+  footer
+    p.smol iikoto Copyright © 2016-#{Time.now.year} iikoto development group
+    p.smol All trademarks, copyrights, comments and images on this page are owned by and are the responsibility of their respective parties.

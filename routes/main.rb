@@ -5,7 +5,7 @@ class Imageboard
   # This is the route for the homepage.
   get '/' do
     locals = {
-      title: 'Home :: iikoto',
+      title: "Home - #{$CONFIG[:site_name]}",
       type: 'front',
       boards: Board.all
     }

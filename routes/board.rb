@@ -14,7 +14,7 @@ class Imageboard
       redirect '/'
     else
       locals = {
-        title: "/#{board.route}/ :: #{board.name}",
+        title: "/#{board.route}/ - #{board.name}",
         type: 'catalog',
         board: board,
         boards: Board.all,

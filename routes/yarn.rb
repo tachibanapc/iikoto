@@ -15,7 +15,7 @@ class Imageboard
       redirect "/#{board.route}/"
     else
       locals = {
-        title: "/#{board.route}/ :: #{!yarn.subject.empty? ? yarn.subject.truncate(20) : board.name}",
+        title: "/#{board.route}/ - #{!yarn.subject.empty? ? yarn.subject.truncate(20) : board.name}",
         type: 'yarn',
         board: board,
         boards: Board.all,
