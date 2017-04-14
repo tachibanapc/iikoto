@@ -9,10 +9,10 @@ class Imageboard
 
     if board.nil?
       flash[:error] = "The board you selected doesn't exist!"
-      redirect '/'
+      return redirect '/'
     elsif yarn.nil?
       flash[:error] = "The thread you specified doesn't exist!"
-      redirect "/#{board.route}/"
+      return redirect "/#{board.route}/"
     else
       locals = {
         title: "/#{board.route}/ - #{!yarn.subject.empty? ? yarn.subject.truncate(20) : board.name}",
@@ -34,52 +34,52 @@ class Imageboard
 
     if board.nil?
       flash[:error] = "The board you selected doesn't exist!"
-      redirect '/'
+      return redirect '/'
     elsif yarn.nil?
       flash[:error] = "The thread you specified doesn't exist!"
-      redirect "/#{board.route}"
+      return redirect "/#{board.route}"
     else
       if (!params.has_key? "body" or params[:body].empty?) and !params.has_key? "file"
         flash[:error] = "You can't make an empty reply!"
-        redirect "/#{board.route}/thread/#{yarn.number}"
+        return redirect "/#{board.route}/thread/#{yarn.number}"
       end
 
       if params.has_key? "file"
         unless params[:file].is_a? Hash
           flash[:error] = "File parameter must be a file."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         if yarn.image_limit?
           flash[:error] = "The image reply limit has been reached."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         filetype = params[:file][:type]
         if !filetype.match(/image\/jp(e)?g|png|gif/)
           flash[:error] = "The file you provided is of invalid type."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         file = params[:file][:tempfile]
 
         if file.size > $CONFIG[:max_filesize]
           flash[:error] = "The file you provided is too large."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         begin
           image = MiniMagick::Image.read(file)
         rescue MiniMagick::Invalid
           flash[:error] = "The image you provided is invalid."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         properties = {}
 
         if !image.valid?
           flash[:error] = "The image you provided is invalid."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         post = Post.create({
@@ -137,7 +137,7 @@ class Imageboard
       else
         if yarn.reply_limit?
           flash[:error] = "The reply limit has been reached."
-          redirect "/#{board.route}"
+          return redirect "/#{board.route}"
         end
 
         Post.create({
@@ -155,7 +155,7 @@ class Imageboard
         end
       end
 
-      redirect "/#{board.route}/thread/#{yarn.number}"
+      return redirect "/#{board.route}/thread/#{yarn.number}"
     end
   end
 end

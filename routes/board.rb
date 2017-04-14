@@ -5,14 +5,14 @@ class Imageboard
   # Board index page.
   # NOTE: This catches stuff in public too that doesn't exist.
   get '/:board' do
-    redirect "/#{params[:board]}/"
+    return redirect "/#{params[:board]}/"
   end
 
   get '/:board/' do
     board = Board.find_by(route: params[:board])
     if board.nil?
       flash[:error] = "The board you selected doesn't exist!"
-      redirect '/'
+      return redirect '/'
     else
       locals = {
         title: "/#{board.route}/ - #{board.name}",
@@ -31,40 +31,40 @@ class Imageboard
 
     if board.nil?
       flash[:error] = "The board you selected doesn't exist!"
-      redirect '/'
+      return redirect '/'
     end
 
     if !params.has_key? "file" or !params[:file].is_a? Hash
       flash[:error] = "You can't start a thread with no file!"
-      redirect "/#{board.route}"
+      return redirect "/#{board.route}"
     end
 
     filetype = params[:file][:type]
 
     if !filetype.match(/image\/(jp(e)?g|png|gif)/)
       flash[:error] = "The file you provided is of invalid type."
-      redirect "/#{board.route}"
+      return redirect "/#{board.route}"
     end
 
     file = params[:file][:tempfile]
 
     if file.size > $CONFIG[:max_filesize]
       flash[:error] = "The file you provided is too large."
-      redirect "/#{board.route}"
+      return redirect "/#{board.route}"
     end
 
     begin
       image = MiniMagick::Image.read(file)
     rescue MiniMagick::Invalid
       flash[:error] = "The image you provided is invalid."
-      redirect "/#{board.route}"
+      return redirect "/#{board.route}"
     end
 
     properties = {}
 
     if !image.valid?
         flash[:error] = "The image you provided is invalid."
-        redirect "/#{board.route}"
+        return redirect "/#{board.route}"
     end
 
     # Generate a UUID
@@ -123,6 +123,6 @@ class Imageboard
       height: properties[:height]
     })
 
-    redirect "/#{board.route}/thread/#{yarn.number}"
+    return redirect "/#{board.route}/thread/#{yarn.number}"
   end
 end
