@@ -3,6 +3,7 @@ require 'fileutils'
 
 class Imageboard
   # Board index page.
+  # NOTE: This catches stuff in public too that doesn't exist.
   get '/:board' do
     redirect "/#{params[:board]}/"
   end
