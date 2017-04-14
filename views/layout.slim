@@ -16,12 +16,12 @@ html
           a> href="/#{board.route}/" title=board.name
             = board.route
         ' ] [
-        a> href='https://github.com/Lambda-4S/iikoto' source
+        a> href='https://github.com/chihiro/iikoto' source
         ' ]
 
 
       - if !Banner.pick.nil?
-        img[ src="#{Banner.pick}" ]
+        img[ src="#{Banner.pick}" width=300 height=100 id="banner" ]
 
       h1#title = title
 
