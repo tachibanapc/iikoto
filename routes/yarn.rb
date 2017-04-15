@@ -1,5 +1,6 @@
 require 'mini_magick'
 require 'fileutils'
+require 'mimemagic'
 
 class Imageboard
   # Thread view page.
@@ -55,13 +56,15 @@ class Imageboard
           return redirect "/#{board.route}"
         end
 
-        filetype = params[:file][:type]
-        if !filetype.match(/image\/jp(e)?g|png|gif/)
+
+
+        file = params[:file][:tempfile]
+        filetype = MimeMagic.by_path(file.path)
+
+        if !filetype.image?
           flash[:error] = "The file you provided is of invalid type."
           return redirect "/#{board.route}"
         end
-
-        file = params[:file][:tempfile]
 
         if file.size > $CONFIG[:max_filesize]
           flash[:error] = "The file you provided is too large."

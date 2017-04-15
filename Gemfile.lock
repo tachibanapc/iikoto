@@ -15,6 +15,7 @@ GEM
     arel (7.1.2)
     concurrent-ruby (1.0.2)
     i18n (0.7.0)
+    mimemagic (0.3.2)
     mini_magick (4.6.0)
     minitest (5.9.0)
     rack (1.6.4)
@@ -44,6 +45,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  mimemagic
   mini_magick
   rack_csrf
   sass
