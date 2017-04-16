@@ -18,6 +18,7 @@ the requirements are:
 - gem 'sass'
 - gem 'mini_magick'
 - gem 'rack_csrf'
+- gem 'mimemagic'
 
 screenshot
 ----------
