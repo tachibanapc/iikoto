@@ -1,0 +1,13 @@
+main#home
+  - if !session[:user].nil?
+    div#center
+      h1.center You're already logged in!
+      a.center href="/logout" Click here to log out.
+
+  - else
+    form.form action="/admin" method="POST"
+      == Rack::Csrf.csrf_tag(env)
+
+      input.text#username type="text" placeholder="Username" name="username"
+      input.text#password type="password" placeholder="Password" name="password"
+      input.button type="submit" value="Login"

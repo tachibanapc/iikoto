@@ -31,3 +31,9 @@ CREATE TABLE images (
   height INTEGER NOT NULL,
   FOREIGN KEY(post) REFERENCES posts(number)
 );
+
+CREATE TABLE users (
+  username TEXT PRIMARY KEY NOT NULL,
+  password TEXT NOT NULL,
+  salt TEXT NOT NULL
+);

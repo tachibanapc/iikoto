@@ -13,6 +13,7 @@ else
 		$(sqlite3 imageboard.db < models/schemas/sqlite.sql)
 		sql=$(cat <<-'END_HEREDOC'
 			insert into boards(route, name) values("test", "Testing");
+			insert into users(username, password, salt) values("admin", "5ef61034a3ae8dff6c61f5f6dacf7a942b594fc7e3a886a0772f6cf2b47ee4d5933c805571c9d9e0552518fd01c387ddcef3fb34ba31971f56ec95985621ab1f", "ef46e2ef7fcaa218d101105246cc0dab");
 		END_HEREDOC)
 		$(sqlite3 imageboard.db "$sql")
 		;;
@@ -23,6 +24,7 @@ else
 			drop table if exists yarns;
 			drop table if exists posts;
 			drop table if exists images;
+			drop table if exists users;
 		END_HEREDOC)
 		$(sqlite3 imageboard.db "$sql")
 		;;

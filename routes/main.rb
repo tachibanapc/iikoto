@@ -1,3 +1,4 @@
+require_relative 'admin'
 require_relative 'board'
 require_relative 'yarn'
 
