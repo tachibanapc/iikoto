@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
 
   def formatBody
     self.body.sub(/\>\>(?<you>\d+)/, '<a href="#p\k<you>">>>\k<you></a>')
-      .gsub(/\>(?<greentext>.+)/, '<span class="quote">>\k<greentext></span>')
+      .gsub(/(?!\>)\>(?<greentext>.+)/, '<span class="quote">>\k<greentext></span>')
   end
 end
