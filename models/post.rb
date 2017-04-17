@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
     Image.find_by(post: self.number) 
   end
 
-  def formatBody
+  def format_body
     self.body.sub(/\>\>(?<you>\d+)/, '<a href="#p\k<you>">>>\k<you></a>')
       .gsub(/(?!\>)\>(?<greentext>.+)/, '<span class="quote">>\k<greentext></span>')
   end

@@ -24,7 +24,7 @@ main#thread
           img[ src="/thumbs/#{board.route}/#{yarn.op.file.name}" title=yarn.op.file.name ]
 
     .body
-      p = yarn.op.body
+      p == yarn.op.format_body
 
   - if replies
     - replies.each do |reply|
@@ -43,7 +43,7 @@ main#thread
             | &#8470;
           a.num.postnum =< reply.number
 
-        hr: .body: p == reply.formatBody
+        hr: .body: p == reply.format_body
 
 hr
 == slim :postform, locals: { page: "/#{board.route}/thread/#{yarn.number}", yarn: true }
