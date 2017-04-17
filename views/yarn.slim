@@ -13,6 +13,10 @@ main#thread
       span.time => yarn.op.time.strftime('%Y/%m/%d %H:%M')
       a.num href="/#{board.route}/thread/#{yarn.number}" &#8470;
       a.num.postnum =< yarn.number
+      - if !session[:user].nil?
+        div#adminops
+          a href="/delete/#{board.route}/#{yarn.number}" title="Delete" ❌
+          a href="/ban/#{board.route}/#{yarn.number}" title="Delete All & Ban" 🔥
 
     hr
 
@@ -42,6 +46,10 @@ main#thread
           a.num href="/#{board.route}/thread/#{yarn.number}#p#{reply.number}"
             | &#8470;
           a.num.postnum =< reply.number
+          - if !session[:user].nil?
+            div#adminops
+              a href="/delete/#{board.route}/#{reply.number}" title="Delete" ❌
+              a href="/ban/#{board.route}/#{reply.number}" title="Delete All & Ban" 🔥
 
         hr: .body: p == reply.format_body
 
