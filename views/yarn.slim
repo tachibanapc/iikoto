@@ -43,7 +43,7 @@ main#thread
             | &#8470;
           a.num.postnum =< reply.number
 
-        hr: .body: p == reply.body.sub(/\>\>(?<you>\d+)/, '<a href="#p\k<you>">>>\k<you></a>')
+        hr: .body: p == reply.formatBody
 
 hr
 == slim :postform, locals: { page: "/#{board.route}/thread/#{yarn.number}", yarn: true }
