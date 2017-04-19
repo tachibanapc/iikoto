@@ -19,7 +19,8 @@ CREATE TABLE posts (
   name TEXT NOT NULL,
   time DATETIME NOT NULL,
   body TEXT,
-  spoiler BOOLEAN
+  spoiler BOOLEAN,
+  ip TEXT NOT NULL
 );
 
 CREATE TABLE images (

@@ -102,7 +102,8 @@ class Imageboard
       name: params[:name],
       time: DateTime.now,
       body: params[:body],
-      spoiler: params[:spoiler] == "on"
+      spoiler: params[:spoiler] == "on",
+      ip: request.ip
     })
 
     yarn = Yarn.create({

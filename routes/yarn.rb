@@ -90,7 +90,8 @@ class Imageboard
           name: params[:name],
           spoiler: params[:spoiler] == "on",
           time: DateTime.now,
-          body: params[:body]
+          body: params[:body],
+          ip: request.ip
         })
 
         # Generate a UUID
@@ -148,7 +149,8 @@ class Imageboard
           name: params[:name],
           spoiler: params[:spoiler] == "on",
           time: DateTime.now,
-          body: params[:body]
+          body: params[:body],
+          ip: request.ip
         })
 
         # bump the thread
