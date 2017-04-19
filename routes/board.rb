@@ -35,6 +35,10 @@ class Imageboard
       return redirect '/'
     end
 
+    if Ban.banned? request.ip
+      return redirect '/banned'
+    end
+
     if !params.has_key? "file" or !params[:file].is_a? Hash
       flash[:error] = "You can't start a thread with no file!"
       return redirect "/#{board.route}"

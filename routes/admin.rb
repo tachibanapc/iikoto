@@ -24,12 +24,47 @@
 
     yarn = Yarn.find_by(number: params[:post])
 
+    # If there's a yarn with the post's number, then we're dealing with a thread.
     if !yarn.nil?
       Post.where(yarn: params[:post]).delete_all
       yarn.delete
     end
 
     post.delete
+    flash[:error] = "Post deleted."
+    return redirect '/'
+  end
+
+  get "/ban/:post" do
+    if session[:user].nil?
+        flash[:error] = "You are not authorized to do that."
+        return redirect '/'
+    end
+
+    post = Post.find_by(number: params[:post])
+
+    if post.nil?
+      flash[:error] = "The post given doesn't exist!"
+      return redirect '/'
+    end
+
+    yarn = Yarn.find_by(number: params[:post])
+
+    if !yarn.nil?
+      Post.where(yarn: params[:post]).delete_all
+      yarn.delete
+    end
+
+    post.delete
+
+    # delete any other posts and threads made by the user
+    Ban.delete_by post.ip
+
+    Ban.create({
+        ip: post.ip
+    })
+
+    flash[:error] = "User banned and all posts by that IP deleted."
     return redirect '/'
   end
 
@@ -61,5 +96,15 @@
     session[:user] = params[:username]
     flash[:error] = "You are now logged in."
     return redirect "/"
+  end
+
+  get '/banned' do
+    locals = {
+      title: "Banned - #{$CONFIG[:site_name]}",
+      type: 'banned',
+      boards: Board.all
+    }
+
+    slim :banned, locals: locals
   end
 end

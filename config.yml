@@ -26,3 +26,6 @@
 # Hash length to use for image filenames (the longer the better, technically.)
 # Note that this affects the length of links to images on your site.
 :url_hash_size: 32
+
+# contact email
+:email: example@example.com

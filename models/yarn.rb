@@ -13,6 +13,11 @@ class Yarn < ActiveRecord::Base
     }
   end
 
+  def completely_delete
+    Post.where(yarn: self.number).delete_all
+    self.delete
+  end
+
   def reply_limit?
     self.replies.length >= $CONFIG[:reply_limit]
   end

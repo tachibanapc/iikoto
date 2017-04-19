@@ -38,3 +38,7 @@ CREATE TABLE users (
   password TEXT NOT NULL,
   salt TEXT NOT NULL
 );
+
+CREATE TABLE bans (
+  ip TEXT PRIMARY KEY NOT NULL
+);
