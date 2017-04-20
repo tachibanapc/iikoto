@@ -61,7 +61,7 @@ class Imageboard
         file = params[:file][:tempfile]
         filetype = MimeMagic.by_path(file.path)
 
-        if !filetype.image?
+        if !filetype.image? or filetype.subtype == "svg+xml"
           flash[:error] = "The file you provided is of invalid type."
           return redirect "/#{board.route}"
         end
