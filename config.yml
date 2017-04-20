@@ -32,3 +32,6 @@
 
 # secret token used for sessions. CHANGE THIS.
 :secret: your secret here
+
+# maximum post length
+:character_limit: 1024
