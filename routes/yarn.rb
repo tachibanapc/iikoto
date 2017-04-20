@@ -42,9 +42,21 @@ class Imageboard
     elsif Ban.banned? request.ip
       return redirect '/banned'
     else
-      if (!params.has_key? "body" or params[:body].empty?) and !params.has_key? "file"
+      if !params.has_key? "body" and !params.has_key? "file"
         flash[:error] = "You can't make an empty reply!"
         return redirect "/#{board.route}/thread/#{yarn.number}"
+      end
+
+      if params.has_key? "body"
+        if params[:body].strip.empty?
+          flash[:error] = "You cannot make an empty post."
+          return redirect "/#{board.route}"
+        end
+
+        if params[:body].length > $CONFIG[:character_limit]
+          flash[:error] = "Your text post exceeds #{$CONFIG[:character_limit]} characters."
+          return redirect "/#{board.route}"
+        end
       end
 
       if params.has_key? "file"
@@ -57,8 +69,6 @@ class Imageboard
           flash[:error] = "The image reply limit has been reached."
           return redirect "/#{board.route}"
         end
-
-
 
         file = params[:file][:tempfile]
         filetype = MimeMagic.by_path(file.path)
@@ -92,7 +102,7 @@ class Imageboard
           name: params[:name],
           spoiler: params[:spoiler] == "on",
           time: DateTime.now,
-          body: params[:body],
+          body: (params[:body].nil?) ? nil : params[:body].strip,
           ip: request.ip
         })
 
@@ -151,7 +161,7 @@ class Imageboard
           name: params[:name],
           spoiler: params[:spoiler] == "on",
           time: DateTime.now,
-          body: params[:body],
+          body: (params[:body].nil?) ? nil : params[:body].strip,
           ip: request.ip
         })
 

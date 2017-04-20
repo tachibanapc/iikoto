@@ -44,6 +44,11 @@ class Imageboard
       return redirect "/#{board.route}"
     end
 
+    if params.has_key? "body" and params[:body].length > $CONFIG[:character_limit]
+      flash[:error] = "Your text post exceeds #{$CONFIG[:character_limit]} characters."
+      return redirect "/#{board.route}"
+    end
+
     file = params[:file][:tempfile]
     filetype = MimeMagic.by_path(file.path)
 
@@ -105,7 +110,7 @@ class Imageboard
     post = Post.create({
       name: params[:name],
       time: DateTime.now,
-      body: params[:body],
+      body: params[:body].strip,
       spoiler: params[:spoiler] == "on",
       ip: request.ip
     })
