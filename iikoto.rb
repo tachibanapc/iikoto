@@ -37,13 +37,15 @@ ActiveRecord::Base.establish_connection($CONFIG[:connection])
 
 class Imageboard < Sinatra::Base
   # Enable Rack CSRF protection and flashes.
-  enable :sessions
   register Sinatra::Flash
   set :public_folder, File.dirname(__FILE__) + "/public"
 
   Sass::Plugin.options[:style] = :compressed
   use Sass::Plugin::Rack
-  use Rack::Csrf, :raise => true
+  configure do
+    use Rack::Session::Cookie, :secret => $CONFIG[:secret]
+    use Rack::Csrf, :raise => true
+  end
 
   require_relative 'routes/main'
 end

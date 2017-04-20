@@ -29,3 +29,6 @@
 
 # contact email
 :email: example@example.com
+
+# secret token used for sessions. CHANGE THIS.
+:secret: your secret here
