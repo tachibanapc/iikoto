@@ -47,18 +47,6 @@ class Imageboard
         return redirect "/#{board.route}/thread/#{yarn.number}"
       end
 
-      if params.has_key? "body"
-        if params[:body].strip.empty?
-          flash[:error] = "You cannot make an empty post."
-          return redirect "/#{board.route}"
-        end
-
-        if params[:body].length > $CONFIG[:character_limit]
-          flash[:error] = "Your text post exceeds #{$CONFIG[:character_limit]} characters."
-          return redirect "/#{board.route}"
-        end
-      end
-
       if params.has_key? "file"
         unless params[:file].is_a? Hash
           flash[:error] = "File parameter must be a file."
@@ -94,6 +82,11 @@ class Imageboard
 
         if !image.valid?
           flash[:error] = "The image you provided is invalid."
+          return redirect "/#{board.route}"
+        end
+
+        if params.has_key? "body" and params[:body].length > $CONFIG[:character_limit]
+          flash[:error] = "Your text post exceeds #{$CONFIG[:character_limit]} characters."
           return redirect "/#{board.route}"
         end
 
@@ -153,6 +146,21 @@ class Imageboard
       else
         if yarn.reply_limit?
           flash[:error] = "The reply limit has been reached."
+          return redirect "/#{board.route}"
+        end
+
+        if params.has_key? "body"
+          if params[:body].strip.empty?
+            flash[:error] = "You cannot make an empty post."
+            return redirect "/#{board.route}"
+          end
+
+          if params[:body].length > $CONFIG[:character_limit]
+            flash[:error] = "Your text post exceeds #{$CONFIG[:character_limit]} characters."
+            return redirect "/#{board.route}"
+          end
+        else
+          flash[:error] = "Your post must include the body field, if not an image."
           return redirect "/#{board.route}"
         end
 
