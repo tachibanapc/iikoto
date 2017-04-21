@@ -10,9 +10,10 @@ class Ban < ActiveRecord::Base
 
       if !yarn.nil?
         yarn.completely_delete
+      else
+        Yarn.find_by(number: post.yarn).correct_updated
+        post.delete
       end
-
-      post.delete
     }
   end
 end

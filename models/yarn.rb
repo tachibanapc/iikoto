@@ -18,6 +18,10 @@ class Yarn < ActiveRecord::Base
     self.delete
   end
 
+  def correct_updated
+    self.updated = Post.where(yarn: self.number).maximum(:time) 
+  end
+
   def reply_limit?
     self.replies.length >= $CONFIG[:reply_limit]
   end
